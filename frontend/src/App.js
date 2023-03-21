@@ -1,6 +1,8 @@
 import './App.css';
 import { fetchAllProducts } from './lib/sanity/productServices';
 import {useEffect, useState} from 'react'
+import Frontpage from './pages/Frontpage';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -21,10 +23,9 @@ function App() {
   console.log(prods)
 
   return (
-    <>
-    <h1>Innhold fra Sanity</h1>
-    {prods?.map((p, i) => <h2 key={i}>{p.product_title}</h2>)}
-    </>
+    <Routes>
+    <Route index element={<Frontpage products={prods} />} />
+    </Routes>
   );
 }
 
